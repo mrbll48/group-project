@@ -1,0 +1,15 @@
+:root {
+
+}
+
+body {
+    font-size: 62.5%;
+    background-color: rgb(167, 167, 167);
+}
+
+#title {
+    font-size: 3rem;
+    text-align: center;
+    background-color: rgb(87, 87, 87);
+    color: white;
+}
