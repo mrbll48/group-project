@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
+    
     <title>Waist-Watchers</title>
 </head>
 <body>
-    <header>
-        <div id="title" class="card-panel #546e7a blue-grey darken-1 white-text center-align">Waist Watchers</div>
-    </header>
+    <!-- navigation bar -->
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Waist Watcher</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+          </ul>
+        </div>
+    </nav>
+
     <main>
         <div id="workouts" class="column  valign-wrapper">
             <form id="form1">
@@ -21,7 +31,31 @@
                 <select><option>Difficulty</option></select>
             </form>
         </div>
+<!-- card -->
+        <div class="row">
+            <div class="col s12 m6">
+              <div class="card blue-grey darken-1 center">
+                <div class="card-content white-text center">
+                  <span class="card-title">Select Workouts</span>
+<!-- drop down menu -->
+                    <div class="dropdown">
+                        <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        </select>
+                        <label>Materialize Select</label>
+                    </div>
+                </div> 
+
+                <div class="card-action">
+                  <a href="#">Generate</a>
+                  <a href="#">Randomize</a>
+                </div>
+              </div>
+            </div>
+          </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
-</html>
