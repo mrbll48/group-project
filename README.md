@@ -1,3 +1,3 @@
 # group-project
 
-## User Story 
+## User Story
