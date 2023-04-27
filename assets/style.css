@@ -58,12 +58,4 @@ nav a:hover {
     display: flex;
 }
 
-/* header for second page */
-header {
-    background-color: #bfc1bd;
-    background-image: linear-gradient(#bfc1bd, #878984);
-    color: white;
-    padding: 1rem;
-    text-align: center;
-}
 
