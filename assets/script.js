@@ -1,7 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
-  });
 // API keys for fetch requests
 var workoutAPIKey = '4Z7299Xd9HEZMOuF2j15sg==HS0gwsLVKjmqzWlK'
 var youtubeAPIKey = 'AIzaSyC7M2WXOg4tv1C2qqm52Qn_ePVce1tHqDA'
@@ -14,16 +10,23 @@ var workoutDifficulty = document.getElementById('workout-difficulty')
 
 function getWorkout(event) {
     event.preventDefault();
-    var exerciseRequestUrl = `https://api.api-ninjas.com/v1/exercises?type=${workoutType}&muscle=${workoutMuscle}&difficulty=${workoutDifficulty}&X-Api-Key=${workoutAPIKey}`
-    fetch(exerciseRequestUrl)
-        .then(function (response) {
-            return response.json();
+    let options = {
+        method: 'GET',
+        headers: { 'x-api-key': workoutAPIKey }
+    }
+  
+  let url = `https://api.api-ninjas.com/v1/exercises?type=${workoutType}&muscle=${workoutMuscle}&difficulty=${workoutDifficulty}`
+  
+  fetch(url,options)
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
         })
-            .then(function (data) {
-                console.log(data);
-            })
-            getVideo()
+        .catch(err => {
+            console.log(`error ${err}`)
+        });
 }
+
 
 function getVideo() {
     var videoRequestUrl = `https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular`
