@@ -1,28 +1,3 @@
-/* body {
-    height: 100vh;
-
-} */
-/* 
-#title {
-    font-size: 3rem;
-    text-align: center;
-    width: 100%;
-}
-
-#workouts {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-self: center;
-    
-}
-
-#form1 {
-    font-size: 1.5rem;
-    border: 1px solid;
-    display: flex; 
-    flex-direction: column;
-} */
 body {
     display: flex;
     flex-direction: column;
@@ -132,4 +107,13 @@ nav a:hover {
 .menu-open {
     display: block;
     opacity: 1;
+}
+=======
+/* header for second page */
+header {
+    background-color: #bfc1bd;
+    background-image: linear-gradient(#bfc1bd, #8fa17d);
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
