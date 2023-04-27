@@ -12,3 +12,15 @@ function getWorkout(event) {
                 console.log(data);
             })
 }
+
+function getVideo() {
+    var videoRequestUrl = `https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular`
+    var videoUrl = `https://www.youtube.com/embed/${videoID}`
+    fetch (videoRequestUrl) 
+        .then(function (response) {
+            return response.json();
+        })
+            .then(function (data) {
+                console.log(data)
+            })
+}
