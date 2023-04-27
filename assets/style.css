@@ -17,12 +17,6 @@ nav {
     background-color: #bfc1bd;
 }
 
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    min-width: 300px;
-}
-  
 nav a {
     color: #e9ece6;
     font-weight: bold;
@@ -33,4 +27,10 @@ nav a:hover {
     color: #fff;
 }
 
-
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
