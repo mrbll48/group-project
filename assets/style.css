@@ -5,6 +5,7 @@ body {
     background-image: url(https://images.pexels.com/photos/669580/pexels-photo-669580.jpeg);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
 }
   
 h1 {
@@ -59,6 +60,7 @@ nav a:hover {
     border: none;
 }
 
+
 .caret {
     width: 0;
     height: 0;
@@ -107,13 +109,4 @@ nav a:hover {
 .menu-open {
     display: block;
     opacity: 1;
-}
-=======
-/* header for second page */
-header {
-    background-color: #bfc1bd;
-    background-image: linear-gradient(#bfc1bd, #8fa17d);
-    color: white;
-    padding: 10px;
-    text-align: center;
 }
