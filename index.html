@@ -39,7 +39,23 @@
                   <span class="card-title">Select Workouts</span>
 <!-- drop down menu -->
                     <div class="dropdown">
-                        <select>
+                        <select id="workout-type">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        </select>
+                        <label>Materialize Select</label>
+
+                        <select id="workout-muscle">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        </select>
+                        <label>Materialize Select</label>
+                        
+                        <select id="workout-difficulty">
                         <option value="" disabled selected>Choose your option</option>
                         <option value="1">Option 1</option>
                         <option value="2">Option 2</option>
@@ -50,7 +66,7 @@
                 </div> 
 
                 <div class="card-action">
-                  <a href="#">Generate</a>
+                  <a href="#" id="generate-button">Generate</a>
                   <a href="#">Randomize</a>
                 </div>
               </div>
