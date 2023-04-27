@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
-    <title>Waist Watcher</title>
+    <title>Waist-Watchers</title>
 </head>
 <body>
+    <!-- navigation bar -->
     <nav>
         <div class="nav-wrapper">
           <a href="#" class="brand-logo">Waist Watcher</a>
@@ -21,20 +20,8 @@
             <li><a href="collapsible.html">JavaScript</a></li>
           </ul>
         </div>
-      </nav>
-
-
     </nav>
-<!-- william working on this section -->
-    <main>
-        <div id="workouts" class="column  valign-wrapper">
-            <form id="form1">
-                <p>Choose an option from each of the following dropdowns</p>
-                <select><option>Type</option></select> 
-                <select><option>Muscle</option></select>
-                <select><option>Difficulty</option></select>
-            </form>
-        </div>
+
 <!-- card -->
         <div class="card">
             <div class="col s12 m6">
@@ -43,17 +30,58 @@
                   <span class="card-title">Select Workouts</span>
 <!-- drop down menu -->
                     <div class="dropdown">
-                        <select>
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        </select>
-                        <label>Materialize Select</label>
+                        <div class ='select'>
+                            <span class = 'selected'>Type</span>
+                            <div class = 'caret'></div>
+                        </div>
+                        <ul class = 'menu'>
+                            <li>cardio</li>
+                            <li>olympic_weightlifting</li>
+                            <li>plyometrics</li>
+                            <li>powerlifting</li>
+                            <li>strength</li>
+                            <li class = 'active'>strongman</li>
+                            <li>stretching</li>
+                        </ul>    
                     </div>
+
+                    <div class="dropdown">
+                        <div class ='select'>
+                            <span class = 'selected'>Type</span>
+                            <div class = 'caret'></div>
+                        </div>
+                        <ul class = 'menu'>
+                          <li>abdominals</li>
+                          <li>abductors</li>
+                          <li>adductors</li>
+                          <li>biceps</li>
+                          <li>calves</li>
+                          <li>chest</li>
+                          <li>forearms</li>
+                          <li>glutes</li>
+                          <li>hamstrings</li>
+                          <li>lats</li>
+                          <li>lower_back</li>
+                          <li>middle_back</li>
+                          <li>neck</li>
+                          <li>quadriceps</li>
+                          <li>traps</li>
+                          <li>tricceps</li>
+                        </ul>  
+                    </div>
+
+                    <div class="card-action">
+                        <a href="#">Generate</a>
+                        <a href="#">Randomize</a>
+                      </div>
                 </div> 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
 
-</html>
+              </div>
+            </div>
+          </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src = './assets/script.js'></script>
+</body>
