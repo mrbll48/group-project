@@ -20,13 +20,13 @@ function getWorkout(event) {
   fetch(url,options)
         .then(res => res.json())
         .then(data => {
-          console.log(data)
+            console.log(data)
         })
         .catch(err => {
             console.log(`error ${err}`)
         });
+        getVideo();
 }
-
 
 function getVideo() {
     var videoRequestUrl = `https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular`
