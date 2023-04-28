@@ -73,6 +73,5 @@ dropdowns.forEach (dropdown => {
     });
 });
 
-=======
 generateBtn.addEventListener('click', getWorkout)
 
