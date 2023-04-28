@@ -4,15 +4,20 @@ var youtubeAPIKey = 'AIzaSyC7M2WXOg4tv1C2qqm52Qn_ePVce1tHqDA'
 // tag generate workout button
 var generateBtn = document.getElementById('generate-button')
 // tag the dropdown menus for each option
-var workoutType = document.getElementById('workout-type')
-var workoutMuscle = document.getElementById('workout-muscle')
-var workoutDifficulty = document.getElementById('workout-difficulty')
+// console.log(instance)
+// console.log(workoutType)
+var instances;
 
-// console.log(workoutType.innerHTML)
-// console.log(workoutMuscle.innerHTML)
+document.getElementById("test").addEventListener("click",() => console.log(document.getElementById("type").value))
+
+
+// var workoutDifficulty = document.getElementById('workout-difficulty')
 
 function getWorkout(event) {
     event.preventDefault();
+    var workoutType = document.getElementById('type').value
+    var workoutMuscle = document.getElementById('muscle').value
+    console.log(workoutType, workoutMuscle)
     let options = {
         method: 'GET',
         headers: { 'x-api-key': workoutAPIKey }
@@ -45,7 +50,9 @@ function getWorkout(event) {
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
+    instances = M.FormSelect.init(elems);
+    // var instance = M.FormSelect.getInstance(elem);
+    console.log(instances[0].getSelectedValues('#type'));
   });
 
 generateBtn.addEventListener('click', getWorkout)
