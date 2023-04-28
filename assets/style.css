@@ -5,6 +5,7 @@ body {
     background-image: url(https://images.pexels.com/photos/669580/pexels-photo-669580.jpeg);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
 }
   
 h1 {
@@ -58,6 +59,7 @@ nav a:hover {
     font-size: 16px;
     border: none;
 }
+
 
 .caret {
     width: 0;
@@ -117,3 +119,4 @@ header {
     padding: 10px;
     text-align: center;
 }
+
