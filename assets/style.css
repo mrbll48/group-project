@@ -1,3 +1,7 @@
+html {
+    height: 100vh;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -36,7 +40,6 @@ nav a:hover {
   margin: auto;
   text-align: center;
   font-family: arial;
-
 }
 
 .select {
@@ -50,16 +53,8 @@ nav a:hover {
     padding: 1em;
     cursor: pointer;
     transition: background 0.3s;
-    margin: 10px;
 }
-/* dropdown button for card */
-.dropdown {
-    /* background-color: #ededed; */
-    color: black;
-    /* padding: 16px; */
-    font-size: 16px;
-    border: none;
-}
+
 
 
 .caret {
