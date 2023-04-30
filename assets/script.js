@@ -14,40 +14,34 @@ function getWorkout(event) {
     event.preventDefault();
     var workoutType = document.getElementById('type').value
     var workoutMuscle = document.getElementById('muscle').value
+    var workoutDifficulty = document.getElementById('difficulty').value
     console.log(workoutType, workoutMuscle)
-
-    // $.ajax({
-    //     method: 'GET',
-    //     url: `https://api.api-ninjas.com/v1/exercises?type=${workoutType}&muscle=${workoutMuscle}`,
-    //     headers: { 'X-Api-Key': workoutAPIKey},
-    //     contentType: 'application/json',
-    //     success: function(result) {
-    //         console.log(result);
-    //     },
-    //     error: function ajaxError(jqXHR) {
-    //         console.error('Error: ', jqXHR.responseText);
-    //     }
-    // });
 
     let options = {
         method: 'GET',
         headers: { 'x-api-key': workoutAPIKey }
     }
 
-  let url = `https://api.api-ninjas.com/v1/exercises?type=${workoutType}&muscle=${workoutMuscle}`
-console.log(url)
-  fetch(url,options)
+    let url = `https://api.api-ninjas.com/v1/exercises?type=${workoutType}&muscle=${workoutMuscle}&difficulty=${workoutDifficulty}`
+   
+    fetch(url,options)
         .then(res => res.json())
-        .then(data => {
-          console.log(data)
-        })
             .then(function (data) {
-                console.log(data);
+            console.log(data)
+            printResults(data)
             })
-            getVideo()
         .catch(err => {
             console.log(`error ${err}`)
         });
+    
+    // getVideo()
+}
+
+function printResults(data) {
+    console.log(data)
+    for (var i = 0; i < data.length; i++) {
+        
+    }
 }
 
 // function getVideo() {
@@ -66,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     instances = M.FormSelect.init(elems);
     // var instance = M.FormSelect.getInstance(elem);
-    console.log(instances[0].getSelectedValues('#type'));
   });
 
 generateBtn.addEventListener('click', getWorkout)
