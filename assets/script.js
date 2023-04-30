@@ -7,6 +7,8 @@ var generateBtn = document.getElementById('generate-button')
 // console.log(instance)
 // console.log(workoutType)
 var instances;
+// placeholder to test dynamic element generation, will change later
+var workoutLocations = document.getElementById('workouts')
 
 // var workoutDifficulty = document.getElementById('workout-difficulty')
 
@@ -26,20 +28,48 @@ function getWorkout(event) {
    
     fetch(url,options)
         .then(res => res.json())
-            .then(function (data) {
-            console.log(data)
-            printResults(data)
+            .then(function (workouts) {
+            console.log(workouts)
+            printResults(workouts)
             })
-        .catch(err => {
-            console.log(`error ${err}`)
-        });
+        // .catch(err => {
+        //     console.log(`error ${err}`)
+        // });
     
     // getVideo()
 }
 
-function printResults(data) {
-    console.log(data)
+function printResults(workouts) {
+    console.log(workouts);
     for (var i = 0; i < data.length; i++) {
+        console.log(workouts[i].name)
+        // dynamically create the card each workout will be on
+        var workoutCard = document.createElement('div');
+        // pulls the name of the workout from the array of workouts 
+        var workoutName = data[i].name
+        // dynamically genereates a p element for the workout name
+        var nameEl = document.createElement('p');
+        // pulls the difficulty of the workout from the aray
+        var workoutDifficulty = data[i].difficulty
+        // dynamically generates the p element for the workout difficulty
+        var difficultyEl = document.createElement('p');
+        // pulls the workout instructions from the array
+        var workoutInstructions = data[i].instructions
+        // dynamically creates the p element for the workout instructions
+        var instructionsEl = document.createElement('p');
+        
+        // sets the name element equal to the workout name text content pulled from the array
+        nameEl.textContent = workoutName;
+        // sets the workout difficulty element equal to the workout difficulty text content pulled from the aray
+        difficultyEl.textContent = workoutDifficulty;
+        // sets the workout instructions element equal to the workout instructions text content pulled from the array
+        instructionsEl.textContent = workoutInstructions;
+
+        // appends all of the workout elements to the placeholder div in index.html file
+        workoutLocations.appendChild(workoutCard)
+        workoutCard.appendChild(nameEl)
+        workoutCard.appendChild(difficultyEl)
+        workoutCard.appendChild(instructionsEl)
         
     }
 }
