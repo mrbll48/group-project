@@ -41,23 +41,23 @@ function getWorkout(event) {
 
 function printResults(workouts) {
     console.log(workouts);
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < workouts.length; i++) {
         console.log(workouts[i].name)
         // dynamically create the card each workout will be on
         var workoutCard = document.createElement('div');
         // pulls the name of the workout from the array of workouts 
-        var workoutName = data[i].name
+        var workoutName = workouts[i].name
         // dynamically genereates a p element for the workout name
         var nameEl = document.createElement('p');
         // pulls the difficulty of the workout from the aray
-        var workoutDifficulty = data[i].difficulty
+        var workoutDifficulty = workouts[i].difficulty
         // dynamically generates the p element for the workout difficulty
         var difficultyEl = document.createElement('p');
         // pulls the workout instructions from the array
-        var workoutInstructions = data[i].instructions
+        var workoutInstructions = workouts[i].instructions
         // dynamically creates the p element for the workout instructions
         var instructionsEl = document.createElement('p');
-        
+
         // sets the name element equal to the workout name text content pulled from the array
         nameEl.textContent = workoutName;
         // sets the workout difficulty element equal to the workout difficulty text content pulled from the aray
