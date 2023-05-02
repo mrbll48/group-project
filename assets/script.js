@@ -8,16 +8,19 @@ var workoutType = document.getElementById('workout-type')
 var workoutMuscle = document.getElementById('workout-muscle')
 var workoutDifficulty = document.getElementById('workout-difficulty')
 
+// console.log(workoutType.innerHTML)
+// console.log(workoutMuscle.innerHTML)
+
 function getWorkout(event) {
     event.preventDefault();
     let options = {
         method: 'GET',
         headers: { 'x-api-key': workoutAPIKey }
     }
+
+    let url = `https://api.api-ninjas.com/v1/exercises?type=${workoutType.innerHTML}&muscle=${workoutMuscle.innerHTML}`
   
-  let url = `https://api.api-ninjas.com/v1/exercises?type=${workoutType}&muscle=${workoutMuscle}&difficulty=${workoutDifficulty}`
-  
-  fetch(url,options)
+    fetch(url,options)
         .then(res => res.json())
         .then(data => {
             console.log(data)
@@ -25,20 +28,25 @@ function getWorkout(event) {
         .catch(err => {
             console.log(`error ${err}`)
         });
-        getVideo();
+        // getVideo();
 }
 
-function getVideo() {
-    var videoRequestUrl = `https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular`
-    var videoUrl = `https://www.youtube.com/embed/${videoID}`
-    fetch (videoRequestUrl) 
-        .then(function (response) {
-            return response.json();
-        })
-            .then(function (data) {
-                console.log(data)
-            })
-}
+// function getVideo() {
+//     var videoRequestUrl = `https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular`
+//     var videoUrl = `https://www.youtube.com/embed/${videoID}`
+//     fetch (videoRequestUrl) 
+//         .then(function (response) {
+//             return response.json();
+//         })
+//             .then(function (data) {
+//                 console.log(data)
+//             })
+// }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
 
 
 // get all drropdowns from the document 
@@ -73,6 +81,8 @@ dropdowns.forEach (dropdown => {
     });
 });
 
-// =======
+
+
+
 generateBtn.addEventListener('click', getWorkout)
 
