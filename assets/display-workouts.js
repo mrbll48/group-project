@@ -2,6 +2,7 @@
 var workoutAPIKey = '4Z7299Xd9HEZMOuF2j15sg==HS0gwsLVKjmqzWlK';
 var youtubeAPIKey = 'AIzaSyC7M2WXOg4tv1C2qqm52Qn_ePVce1tHqDA';
 var workoutsContainer = document.getElementById('workouts-container');
+var resultsArea = document.getElementById('workouts')
 
 // gets the input from dropdown menus and turns them into useable variables
 function getWorkoutDetails() {
@@ -19,7 +20,14 @@ function getWorkoutDetails() {
     console.log(difficulty);
     // calls function to API search and passes the values taken from URL to the search API function
     searchApi(type, muscle, difficulty);
+    displayQuery(type, muscle, difficulty);
 }
+
+// displays query parameters at the top of the page
+function displayQuery(type, muscle, difficulty) {
+    resultsArea.textContent = type + ', ' + muscle + ', & ' + difficulty
+}
+
 // API search function
 function searchApi(workoutType, workoutMuscle, workoutDifficulty) {
     let options = {
@@ -78,13 +86,15 @@ function printResults(workouts) {
 
         var listItem = document.createElement('li');
         var headerDiv = document.createElement('div');
-        headerDiv.className = 'collapsible-header';
+        headerDiv.setAttribute('class', 'collapsible-header');
+        // headerDiv.setAttribute('class', 'grey darken-3')
         headerDiv.textContent = workoutName + ' - Difficulty: ' + workoutDifficulty;
 
         var bodyDiv = document.createElement('div');
-        bodyDiv.className = 'collapsible-body';
+        bodyDiv.setAttribute('class', 'collapsible-body');
         var instructionsEl = document.createElement('p');
         instructionsEl.textContent = workoutInstructions;
+        // bodyDiv.setAttribute('class', 'grey darken-1')
         bodyDiv.appendChild(instructionsEl);
 
         listItem.appendChild(headerDiv);
