@@ -58,36 +58,56 @@ function searchApi(workoutType, workoutMuscle, workoutDifficulty) {
 // Generates the workouts on the page. 
 function printResults(workouts) {
     console.log(workouts);
+    var workoutsContainer = document.querySelector('#workouts-container .collapsible');
     for (var i = 0; i < workouts.length; i++) {
         console.log(workouts[i].name)
         // dynamically create the card each workout will be on
-        var workoutCard = document.createElement('div');
+        // var workoutCard = document.createElement('div');
         // pulls the name of the workout from the array of workouts 
         var workoutName = workouts[i].name
         // dynamically genereates a p element for the workout name
-        var nameEl = document.createElement('p');
+        // var nameEl = document.createElement('p');
         // pulls the difficulty of the workout from the aray
         var workoutDifficulty = workouts[i].difficulty
         // dynamically generates the p element for the workout difficulty
-        var difficultyEl = document.createElement('p');
+        // var difficultyEl = document.createElement('p');
         // pulls the workout instructions from the array
         var workoutInstructions = workouts[i].instructions
         // dynamically creates the p element for the workout instructions
+        // var instructionsEl = document.createElement('p');
+
+        var listItem = document.createElement('li');
+        var headerDiv = document.createElement('div');
+        headerDiv.className = 'collapsible-header';
+        headerDiv.textContent = workoutName + ' - Difficulty: ' + workoutDifficulty;
+
+        var bodyDiv = document.createElement('div');
+        bodyDiv.className = 'collapsible-body';
         var instructionsEl = document.createElement('p');
-
-        // sets the name element equal to the workout name text content pulled from the array
-        nameEl.textContent = workoutName;
-        // sets the workout difficulty element equal to the workout difficulty text content pulled from the aray
-        difficultyEl.textContent = workoutDifficulty;
-        // sets the workout instructions element equal to the workout instructions text content pulled from the array
         instructionsEl.textContent = workoutInstructions;
+        bodyDiv.appendChild(instructionsEl);
 
-        // appends all of the workout elements to the placeholder div in index.html file
-        workoutsContainer.appendChild(workoutCard)
-        workoutCard.appendChild(nameEl)
-        workoutCard.appendChild(difficultyEl)
-        workoutCard.appendChild(instructionsEl)
+        listItem.appendChild(headerDiv);
+        listItem.appendChild(bodyDiv);
+
+        workoutsContainer.appendChild(listItem)
+
+        // // sets the name element equal to the workout name text content pulled from the array
+        // nameEl.textContent = workoutName;
+        // // sets the workout difficulty element equal to the workout difficulty text content pulled from the aray
+        // difficultyEl.textContent = workoutDifficulty;
+        // // sets the workout instructions element equal to the workout instructions text content pulled from the array
+        // instructionsEl.textContent = workoutInstructions;
+
+        // // appends all of the workout elements to the placeholder div in index.html file
+        // workoutsContainer.appendChild(workoutCard)
+        // workoutCard.appendChild(nameEl)
+        // workoutCard.appendChild(difficultyEl)
+        // workoutCard.appendChild(instructionsEl)
     }
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
 }
 // calls first function on page load
 getWorkoutDetails()
+
