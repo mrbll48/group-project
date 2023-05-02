@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 generateBtn.addEventListener('click', getWorkout)
 
-// Section for youtube API
+// Section for youtube API *user's account uploads*
 
 function retrieveMyUploads() {
     var results = YouTube.Channels.list('contentDetails', {mine: true});
@@ -68,5 +68,16 @@ function retrieveMyUploads() {
         }
         nextPageToken = playlistResponse.nextPageToken;
       }
+    }
+  }
+
+//   searching for videos with specific topic
+
+function searchByTopic() {
+    var mid = '/m/0gjf126';
+    var results = YouTube.Search.list('id,snippet', {topicId: mid, maxResults: 25});
+    for(var i in results.items) {
+      var item = results.items[i];
+      Logger.log('[%s] Title: %s', item.id.videoId, item.snippet.title);
     }
   }
