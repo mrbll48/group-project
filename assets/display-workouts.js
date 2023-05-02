@@ -32,11 +32,11 @@ function searchApi(workoutType, workoutMuscle, workoutDifficulty) {
     fetch(url,options)
         .then(res => res.json())
             .then(function (workouts) {
-            console.log(workouts)
-            printResults(workouts)
+            console.log(workouts);
+            printResults(workouts);
             })
         .catch(err => {
-            console.log(`error ${err}`)
+            console.log(`error ${err}`);
         });
     
     // getVideo()
@@ -62,36 +62,36 @@ function printResults(workouts) {
         console.log(workouts[i].name)
         // dynamically create the card each workout will be on
         var workoutCard = document.createElement('div');
-        workoutCard.setAttribute('class', 'workout-card')
+        workoutCard.setAttribute('class', 'workout-card');
         // pulls the name of the workout from the array of workouts 
         var workoutName = workouts[i].name
         // dynamically genereates a p element for the workout name
         var nameEl = document.createElement('p');
-        nameEl.setAttribute('class', 'workout-name')
+        nameEl.setAttribute('class', 'workout-name');
         // pulls the difficulty of the workout from the aray
         var workoutDifficulty = workouts[i].difficulty
         // dynamically generates the p element for the workout difficulty
         var difficultyEl = document.createElement('p');
-        difficultyEl.setAttribute('class', 'workout-difficulty')
+        difficultyEl.setAttribute('class', 'workout-difficulty');
         // pulls the workout instructions from the array
         var workoutInstructions = workouts[i].instructions
         // dynamically creates the p element for the workout instructions
         var instructionsEl = document.createElement('p');
-        instructionsEl.setAttribute('class', 'workout-instructions')
+        instructionsEl.setAttribute('class', 'workout-instructions');
 
         // sets the name element equal to the workout name text content pulled from the array
         nameEl.textContent = workoutName;
         // sets the workout difficulty element equal to the workout difficulty text content pulled from the aray
-        difficultyEl.textContent = workoutDifficulty;
+        difficultyEl.textContent = 'Difficulty: ' + workoutDifficulty;
         // sets the workout instructions element equal to the workout instructions text content pulled from the array
-        instructionsEl.textContent = workoutInstructions;
+        instructionsEl.textContent = 'Instructions: ' + workoutInstructions;
 
         // appends all of the workout elements to the placeholder div in index.html file
-        workoutsContainer.appendChild(workoutCard)
-        workoutCard.appendChild(nameEl)
-        workoutCard.appendChild(difficultyEl)
-        workoutCard.appendChild(instructionsEl)
+        workoutsContainer.appendChild(workoutCard);
+        workoutCard.appendChild(nameEl);
+        workoutCard.appendChild(difficultyEl);
+        workoutCard.appendChild(instructionsEl);
     }
 }
 // calls first function on page load
-getWorkoutDetails()
+getWorkoutDetails();
