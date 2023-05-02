@@ -32,11 +32,11 @@ function searchApi(workoutType, workoutMuscle, workoutDifficulty) {
     fetch(url,options)
         .then(res => res.json())
             .then(function (workouts) {
-            console.log(workouts)
-            printResults(workouts)
+            console.log(workouts);
+            printResults(workouts);
             })
         .catch(err => {
-            console.log(`error ${err}`)
+            console.log(`error ${err}`);
         });
     
     // getVideo()
