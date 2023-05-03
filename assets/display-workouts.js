@@ -8,16 +8,12 @@ var resultsArea = document.getElementById('workouts')
 function getWorkoutDetails() {
     // splits webpage URL into an array
     var workoutDetailsArr = document.location.search.split('&');
-    console.log(workoutDetailsArr);
     // splits array and selects the workout type
     var type = workoutDetailsArr[0].split('=').pop();
-    console.log(type);
     // splits array and selects workout muscle
     var muscle = workoutDetailsArr[1].split('=').pop();
-    console.log(muscle);
     // splits the aray and selects workout difficulty
     var difficulty = workoutDetailsArr[2].split('=').pop();
-    console.log(difficulty);
     // calls function to API search and passes the values taken from URL to the search API function
     searchApi(type, muscle, difficulty);
     displayQuery(type, muscle, difficulty);
@@ -40,80 +36,77 @@ function searchApi(workoutType, workoutMuscle, workoutDifficulty) {
     fetch(url,options)
         .then(res => res.json())
             .then(function (workouts) {
-            console.log(workouts);
-            printResults(workouts);
+                console.log(workouts)
+                getVideo(workoutType, workoutMuscle, workoutDifficulty, workouts);
             })
         .catch(err => {
             console.log(`error ${err}`);
         });
+        console.log(workouts)
     
-    // getVideo()
+
+    // var videoRequestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${workoutType},${workoutMuscle},${workoutDifficulty}&key=${youtubeAPIKey}`
+    // // var videoUrl = `https://www.youtube.com/embed/${videoID}`
+    // fetch (videoRequestUrl) 
+    //     .then(function (response) {
+    //         return response.json();
+    //     })
+    //         .then(function (workoutVideos) {
+    //             console.log(workoutVideos)
+    //         })
+    
 }
 // TODO: code youtube API request
 
-// function getVideo() {
-//     var videoRequestUrl = `https://www.googleapis.com/youtube/v3/videos?part=player&chart=mostPopular`
-//     var videoUrl = `https://www.youtube.com/embed/${videoID}`
-//     fetch (videoRequestUrl) 
-//         .then(function (response) {
-//             return response.json();
-//         })
-//             .then(function (data) {
-//                 console.log(data)
-//             })
-// }
+function getVideo(type, muscle, difficulty, workouts) {
+    console.log(type, muscle, difficulty)
+    console.log(workouts)
+    var videoRequestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${type},${muscle},${difficulty}&key=${youtubeAPIKey}`
+    // var videoUrl = `https://www.youtube.com/embed/${videoID}`
+    fetch (videoRequestUrl) 
+        .then(function (response) {
+            return response.json();
+        })
+            .then(function (workoutVideos) {
+                console.log(workoutVideos)
+                printResults(workouts, workoutVideos)
+            })
+
+}
 
 // Generates the workouts on the page. 
-function printResults(workouts) {
-    console.log(workouts);
+function printResults(workouts, workoutVideos) {
+    console.log(workoutVideos)
+    var workoutVid = workoutVideos.items[0].snippet.thumbnails.default
+    console.log(workoutVid)
     var workoutsContainer = document.querySelector('#workouts-container .collapsible');
     for (var i = 0; i < workouts.length; i++) {
-        console.log(workouts[i].name)
-        // dynamically create the card each workout will be on
-        // var workoutCard = document.createElement('div');
-        // pulls the name of the workout from the array of workouts 
         var workoutName = workouts[i].name
-        // dynamically genereates a p element for the workout name
-        // var nameEl = document.createElement('p');
-        // pulls the difficulty of the workout from the aray
         var workoutDifficulty = workouts[i].difficulty
-        // dynamically generates the p element for the workout difficulty
-        // var difficultyEl = document.createElement('p');
-        // pulls the workout instructions from the array
         var workoutInstructions = workouts[i].instructions
-        // dynamically creates the p element for the workout instructions
-        // var instructionsEl = document.createElement('p');
 
         var listItem = document.createElement('li');
         var headerDiv = document.createElement('div');
         headerDiv.setAttribute('class', 'collapsible-header');
-        // headerDiv.setAttribute('class', 'grey darken-3')
         headerDiv.textContent = workoutName + ' - Difficulty: ' + workoutDifficulty;
 
         var bodyDiv = document.createElement('div');
         bodyDiv.setAttribute('class', 'collapsible-body');
         var instructionsEl = document.createElement('p');
         instructionsEl.textContent = workoutInstructions;
-        // bodyDiv.setAttribute('class', 'grey darken-1')
-        bodyDiv.appendChild(instructionsEl);
 
+        var workoutVideoEl = document.createElement('iframe')
+        workoutVideoEl.setAttribute('class', 'workout-video')
+        workoutVideoEl.innerHTML = workoutVid
+
+        bodyDiv.appendChild(instructionsEl);
         listItem.appendChild(headerDiv);
         listItem.appendChild(bodyDiv);
+        workoutsContainer.appendChild(listItem);
+        bodyDiv.appendChild(workoutVideoEl)
+console.log(workoutVid)
+        // workoutVideoEl.innerHTML = <img src='workoutVid'>
 
-        workoutsContainer.appendChild(listItem)
-
-        // // sets the name element equal to the workout name text content pulled from the array
-        // nameEl.textContent = workoutName;
-        // // sets the workout difficulty element equal to the workout difficulty text content pulled from the aray
-        // difficultyEl.textContent = workoutDifficulty;
-        // // sets the workout instructions element equal to the workout instructions text content pulled from the array
-        // instructionsEl.textContent = workoutInstructions;
-
-        // // appends all of the workout elements to the placeholder div in index.html file
-        // workoutsContainer.appendChild(workoutCard)
-        // workoutCard.appendChild(nameEl)
-        // workoutCard.appendChild(difficultyEl)
-        // workoutCard.appendChild(instructionsEl)
     }
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems);
