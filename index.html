@@ -1,110 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="./assets/style.css">
-    
-    <title>Waist-Watchers</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="./assets/style.css">
+
+  <title>Waist-Watchers</title>
 </head>
+
 <body>
-    <!-- navigation bar -->
-    <nav>
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Waist Watcher</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="https://github.com/mrbll48/group-project">Github</a></li>
-            <li><a href="badges.html">About</a></li>
-          </ul>
-        </div>
-    </nav>
-    <div class = "icon-block">
-      <h5 class="center">About Us!</h5>
-      <p> 
-        Are you tired of doing the same old workout routine every day? 
-        Do you struggle to come up with new exercises to challenge yourself 
-        and keep things interesting? Introducing our new generating workout page!</p>
-        
-        <p>Our page uses cutting-edge technology to generate unique and personalized
-         workout routines just for you. With just a few clicks, you can create a custom 
-         workout plan tailored to your fitness level, goals, and preferences. 
-         Whether you want to build strength, increase endurance, or simply get 
-         in better shape, our page has got you covered. </p>
-
-         <p> Our workout generator draws on a vast database of exercises 
-          and training methods, so you'll never run out of ideas for your 
-          next workout. With our generating workout page, you'll never have 
-          to worry about getting bored with your workouts again. Say goodbye 
-          to uninspired, repetitive routines and hello to a fun, challenging, 
-          and personalized workout experience.</p>
+  <!-- navigation bar -->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Waist Watcher</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="https://github.com/mrbll48/group-project">Github</a></li>
+        <li><a id="about-trigger" href="#about-modal">About</a></li>
+      </ul>
     </div>
-<!-- card -->
-        <div class="card" style = "position:relative; top:80px;">
-            <div class="col s12 m6">
-              <div class="card blue-grey darken-1 center">
-                <div class="card-content white-text center">
-                  <span class="card-title">Select Workouts</span>
-<!-- drop down menu -->
+  </nav>
 
-<div class="input-field col s12">
-        <select id="type">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="cardio">Cardio</option>
-            <option value="olympic_weightlifting">Olympic weightlifting</option>
-            <option value="plyometrics">Plyometrics</option>
-            <option value="powerlifting">Powerlifting</option>
-            <option value="strength">Strength</option>
-            <option value="stringman">Stringman</option>
-            <option value="stretching">Stretching</option>
-        </select>
-            <label>Workout Type</label>
-</div>
-<div class="input-field col s12">
-        <select id="muscle">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="abdominals">Abdominals</option>
-            <option value="abductors">Abductors</option>
-            <option value="adductors">Adductors</option>
-            <option value="biceps">Biceps</option>
-            <option value="calves">Calves</option>
-            <option value="chest">Chest</option>
-            <option value="forearms">Forearms</option>
-            <option value="glutes">Glutes</option>
-            <option value="hamstrings">Hamstrings</option>
-            <option value="lats">Lats</option>
-            <option value="lower_back">Lower_back</option>
-            <option value="middle_back">Middle back</option>
-            <option value="neck">Neck</option>
-            <option value="quadriceps">Quadriceps</option>
-            <option value="traps">Traps</option>
-            <option value="triceps">Triceps</option>
-        </select>
-            <label>Muscle Group</label>
-        </div>
+  <div id="about-modal" class="modal">
+    <div class="modal-content">
+      <h5 class="center">About Us!</h5>
+      <p>
+        Are you tired of doing the same old workout routine every day?
+        Do you struggle to come up with new exercises to challenge yourself
+        and keep things interesting? Introducing our new generating workout page!</p>
 
-        <div class="input-field col s12">
-          <select id="difficulty">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="beginner">Beginner </option>
-            <option value="intermediate">Intermediate</option>
-            <option value="expert">Expert</option>
-          </select>
-          <label>Difficulty Type</label>
-        </div>
+      <p>Our page uses cutting-edge technology to generate unique and personalized
+        workout routines just for you. With just a few clicks, you can create a custom
+        workout plan tailored to your fitness level, goals, and preferences.
+        Whether you want to build strength, increase endurance, or simply get
+        in better shape, our page has got you covered. </p>
 
-                    <div class="card-action">
-                        <a href="#" id="generate-button">Generate Workout</a>
-                      </div>
-                </div> 
-              </div>
+      <p> Our workout generator draws on a vast database of exercises
+        and training methods, so you'll never run out of ideas for your
+        next workout. With our generating workout page, you'll never have
+        to worry about getting bored with your workouts again. Say goodbye
+        to uninspired, repetitive routines and hello to a fun, challenging,
+        and personalized workout experience.</p>
+    </div>
+
+    <div class="modal-footer">
+      <a id="modal-close" href="#!" class="waves-effec waves-green btn-flat">Close</a>
+    </div>
+  </div>
+  <!-- card -->
+  <div class="icon-block">
+    <div class="card" style="position:relative; top:80px;">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1 center">
+          <div class="card-content white-text center">
+            <span class="card-title">Select Workouts</span>
+            <!-- drop down menu -->
+
+            <div class="input-field col s12">
+              <select id="type">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="cardio">Cardio</option>
+                <option value="olympic_weightlifting">Olympic weightlifting</option>
+                <option value="plyometrics">Plyometrics</option>
+                <option value="powerlifting">Powerlifting</option>
+                <option value="strength">Strength</option>
+                <option value="stringman">Stringman</option>
+                <option value="stretching">Stretching</option>
+              </select>
+              <label>Workout Type</label>
+            </div>
+            <div class="input-field col s12">
+              <select id="muscle">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="abdominals">Abdominals</option>
+                <option value="abductors">Abductors</option>
+                <option value="adductors">Adductors</option>
+                <option value="biceps">Biceps</option>
+                <option value="calves">Calves</option>
+                <option value="chest">Chest</option>
+                <option value="forearms">Forearms</option>
+                <option value="glutes">Glutes</option>
+                <option value="hamstrings">Hamstrings</option>
+                <option value="lats">Lats</option>
+                <option value="lower_back">Lower_back</option>
+                <option value="middle_back">Middle back</option>
+                <option value="neck">Neck</option>
+                <option value="quadriceps">Quadriceps</option>
+                <option value="traps">Traps</option>
+                <option value="triceps">Triceps</option>
+              </select>
+              <label>Muscle Group</label>
+            </div>
+
+            <div class="input-field col s12">
+              <select id="difficulty">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="beginner">Beginner </option>
+                <option value="intermediate">Intermediate</option>
+                <option value="expert">Expert</option>
+              </select>
+              <label>Difficulty Type</label>
+            </div>
+
+            <div class="card-action">
+              <a href="#" id="generate-button">Generate Workout</a>
             </div>
           </div>
-      
+        </div>
+      </div>
+    </div>
+
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script src = './assets/script.js'></script>
+    <script src='./assets/script.js'></script>
 </body>

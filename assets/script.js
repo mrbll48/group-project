@@ -1,3 +1,26 @@
+// About Us modal
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+
+    // Attach event listeners
+    var aboutTrigger = document.getElementById('about-trigger');
+    var modalClose = document.getElementById('modal-close');
+
+    aboutTrigger.addEventListener('click', function (event) {
+        event.preventDefault();
+        var instance = M.Modal.getInstance(document.getElementById('about-modal'));
+        instance.open();
+    });
+
+    modalClose.addEventListener('click', function (event) {
+        event.preventDefault();
+        var instance = M.Modal.getInstance(document.getElementById('about-modal'));
+        instance.close();
+    });
+});
+
+
 // tag generate workout button
 var generateBtn = document.getElementById('generate-button')
 var instances;
