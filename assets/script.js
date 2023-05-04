@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
 
-    // Attach event listeners
     var aboutTrigger = document.getElementById('about-trigger');
     var modalClose = document.getElementById('modal-close');
 
