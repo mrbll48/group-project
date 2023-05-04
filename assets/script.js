@@ -36,4 +36,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 // adds event listener to generate workout button
 generateBtn.addEventListener('click', getWorkout)
-

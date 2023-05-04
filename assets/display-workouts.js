@@ -1,8 +1,49 @@
 // API keys for fetch requests
 var workoutAPIKey = '4Z7299Xd9HEZMOuF2j15sg==HS0gwsLVKjmqzWlK';
-var youtubeAPIKey = 'AIzaSyCPF9U2_tzgTOAQSgw7FLYEwKiW7Gv4fxE';
+var youtubeAPIKey = 'AIzaSyCeVv69Uf70zAWJ6KZfHeHx-P0pSOlLnIA';
 var workoutsContainer = document.getElementById('workouts-container');
 var resultsArea = document.getElementById('workouts')
+
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '390',
+      width: '640',
+      videoId: 's8hWQwFwayo',
+      playerVars: {
+        'playsinline': 1
+      },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+
+  var done = false;
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+      setTimeout(stopVideo, 6000);
+      done = true;
+    }
+  }
+  function stopVideo() {
+    player.stopVideo();
+  }
+
 
 // gets the input from dropdown menus and turns them into useable variables
 function getWorkoutDetails() {
@@ -63,6 +104,7 @@ function printResults(workouts, workoutVideos) {
     var workoutVid = workoutVideos.items[0].snippet.thumbnails.default.url
     console.log(workoutVid)
     var workoutsContainer = document.querySelector('#workouts-container .collapsible');
+    
     // var videoUrl = `https://www.youtube.com/embed/${videoID}`
     for (var i = 0; i < workouts.length; i++) {
         var workoutName = workouts[i].name
@@ -79,15 +121,14 @@ function printResults(workouts, workoutVideos) {
         var instructionsEl = document.createElement('p');
         instructionsEl.textContent = workoutInstructions;
 
-        var workoutVideoEl = document.createElement('iframe')
-        workoutVideoEl.setAttribute('class', 'workout-video')
-        // workoutVideoEl.innerHTML = workoutVid
+        // var workoutVideoEl = document.createElement('iframe')
+        // workoutVideoEl.setAttribute('id', 'player')
 
         bodyDiv.appendChild(instructionsEl);
         listItem.appendChild(headerDiv);
         listItem.appendChild(bodyDiv);
         workoutsContainer.appendChild(listItem);
-        bodyDiv.appendChild(workoutVideoEl)
+        // bodyDiv.appendChild(workoutVideoEl)
         // workoutVideoEl.innerHTML = "<img src =\"workoutVideos.items[0].snippet.thumbnails.default.url\" width=\"400px\" height=\"150px\">"
 
     }
