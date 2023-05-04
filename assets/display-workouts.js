@@ -1,6 +1,6 @@
 // API keys for fetch requests
 var workoutAPIKey = '4Z7299Xd9HEZMOuF2j15sg==HS0gwsLVKjmqzWlK';
-var youtubeAPIKey = 'AIzaSyC7M2WXOg4tv1C2qqm52Qn_ePVce1tHqDA';
+var youtubeAPIKey = 'AIzaSyCPF9U2_tzgTOAQSgw7FLYEwKiW7Gv4fxE';
 var workoutsContainer = document.getElementById('workouts-container');
 var resultsArea = document.getElementById('workouts')
 
@@ -36,39 +36,22 @@ function searchApi(workoutType, workoutMuscle, workoutDifficulty) {
     fetch(url,options)
         .then(res => res.json())
             .then(function (workouts) {
-                console.log(workouts)
                 getVideo(workoutType, workoutMuscle, workoutDifficulty, workouts);
             })
         .catch(err => {
             console.log(`error ${err}`);
         });
-        console.log(workouts)
-    
 
-    // var videoRequestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${workoutType},${workoutMuscle},${workoutDifficulty}&key=${youtubeAPIKey}`
-    // // var videoUrl = `https://www.youtube.com/embed/${videoID}`
-    // fetch (videoRequestUrl) 
-    //     .then(function (response) {
-    //         return response.json();
-    //     })
-    //         .then(function (workoutVideos) {
-    //             console.log(workoutVideos)
-    //         })
-    
 }
 // TODO: code youtube API request
 
 function getVideo(type, muscle, difficulty, workouts) {
-    console.log(type, muscle, difficulty)
-    console.log(workouts)
-    var videoRequestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${type},${muscle},${difficulty}&key=${youtubeAPIKey}`
-    // var videoUrl = `https://www.youtube.com/embed/${videoID}`
+    var videoRequestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC68TLK0mAEzUyHx5x5k-S1Q&maxResults=1&q=${type},${muscle},${difficulty}&key=${youtubeAPIKey}`
     fetch (videoRequestUrl) 
         .then(function (response) {
             return response.json();
         })
             .then(function (workoutVideos) {
-                console.log(workoutVideos)
                 printResults(workouts, workoutVideos)
             })
 
@@ -77,9 +60,10 @@ function getVideo(type, muscle, difficulty, workouts) {
 // Generates the workouts on the page. 
 function printResults(workouts, workoutVideos) {
     console.log(workoutVideos)
-    var workoutVid = workoutVideos.items[0].snippet.thumbnails.default
+    var workoutVid = workoutVideos.items[0].snippet.thumbnails.default.url
     console.log(workoutVid)
     var workoutsContainer = document.querySelector('#workouts-container .collapsible');
+    // var videoUrl = `https://www.youtube.com/embed/${videoID}`
     for (var i = 0; i < workouts.length; i++) {
         var workoutName = workouts[i].name
         var workoutDifficulty = workouts[i].difficulty
@@ -97,15 +81,14 @@ function printResults(workouts, workoutVideos) {
 
         var workoutVideoEl = document.createElement('iframe')
         workoutVideoEl.setAttribute('class', 'workout-video')
-        workoutVideoEl.innerHTML = workoutVid
+        // workoutVideoEl.innerHTML = workoutVid
 
         bodyDiv.appendChild(instructionsEl);
         listItem.appendChild(headerDiv);
         listItem.appendChild(bodyDiv);
         workoutsContainer.appendChild(listItem);
         bodyDiv.appendChild(workoutVideoEl)
-console.log(workoutVid)
-        // workoutVideoEl.innerHTML = <img src='workoutVid'>
+        // workoutVideoEl.innerHTML = "<img src =\"workoutVideos.items[0].snippet.thumbnails.default.url\" width=\"400px\" height=\"150px\">"
 
     }
     var elems = document.querySelectorAll('.collapsible');
@@ -113,4 +96,3 @@ console.log(workoutVid)
 }
 // calls first function on page load
 getWorkoutDetails()
-
