@@ -4,18 +4,18 @@ var youtubeAPIKey = 'AIzaSyCeVv69Uf70zAWJ6KZfHeHx-P0pSOlLnIA';
 var workoutsContainer = document.getElementById('workouts-container');
 var resultsArea = document.getElementById('workouts')
 
-  var tag = document.createElement('script');
+var tag = document.createElement('script');
 
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 
-  var player;
-  function onYouTubeIframeAPIReady() {
+var player;
+function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-      height: '390',
-      width: '640',
+      height: '720',
+      width: '1280',
       videoId: 's8hWQwFwayo',
       playerVars: {
         'playsinline': 1
@@ -28,19 +28,18 @@ var resultsArea = document.getElementById('workouts')
   }
 
 
-  function onPlayerReady(event) {
+function onPlayerReady(event) {
     event.target.playVideo();
   }
 
 
-  var done = false;
-  function onPlayerStateChange(event) {
+var done = false;
+function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
-      setTimeout(stopVideo, 6000);
       done = true;
     }
   }
-  function stopVideo() {
+function stopVideo() {
     player.stopVideo();
   }
 
