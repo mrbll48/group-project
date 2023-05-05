@@ -29,5 +29,6 @@ List of collaborators and their GitHub profiles:
 Chris Vinthaya: https://github.com/Chrisvithaya
 Lilia Hernandez: https://github.com/hdezlilia
 Steven Tovar: https://github.com/s-tovar
+William Marks: https://github.com/mrbll48
 
 ## License
