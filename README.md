@@ -26,7 +26,7 @@ At the bottom of each personalized workout page, users will have access to a mot
 
 List of collaborators and their GitHub profiles:  
 
-Chris Vinthaya: 
+Chris Vinthaya: https://github.com/Chrisvithaya
 Lilia Hernandez: https://github.com/hdezlilia
 Steven Tovar: https://github.com/s-tovar
 
