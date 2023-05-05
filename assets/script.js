@@ -49,6 +49,17 @@ function getWorkout(event) {
     var queryString = `./single-repo.html?q=${workoutType}&muscle=${workoutMuscle}&difficulty=${workoutDifficulty}`
     // switches the html pages
     location.assign(queryString);
+    localStore(workoutType, workoutMuscle, workoutDifficulty)
+}
+
+function localStore(workoutType, workoutMuscle, workoutDifficulty) {
+    var queryParams = JSON.parse(localStorage.getItem('paramaters')) || [];
+    queryParams.push(workoutType);
+    queryParams.push(workoutMuscle);
+    queryParams.push(workoutDifficulty);
+
+    localStorage.setItem('parameters', JSON.stringify(queryParams));
+
 }
 
 document.addEventListener('DOMContentLoaded', function() {

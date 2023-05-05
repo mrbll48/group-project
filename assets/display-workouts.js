@@ -78,7 +78,7 @@ function searchApi(workoutType, workoutMuscle, workoutDifficulty) {
         });
 
 }
-6
+
 // API request to youtube 
 function getVideo(type, muscle, difficulty, workouts) {
     var videoRequestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=focus,listen,lift&key=${youtubeAPIKey}`
