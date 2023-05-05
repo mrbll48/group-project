@@ -3,20 +3,19 @@ var workoutAPIKey = '4Z7299Xd9HEZMOuF2j15sg==HS0gwsLVKjmqzWlK';
 var youtubeAPIKey = 'AIzaSyCeVv69Uf70zAWJ6KZfHeHx-P0pSOlLnIA';
 var workoutsContainer = document.getElementById('workouts-container');
 var resultsArea = document.getElementById('workouts')
+let motVid; 
 
+// Adds youtube video player on bottom of page
 var tag = document.createElement('script');
-
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-
 var player;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-container', {
       height: '480',
       width: '853',
-      videoId: 's8hWQwFwayo',
+      videoId: motVid,
       playerVars: {
         'playsinline': 1
       },
@@ -26,13 +25,9 @@ function onYouTubeIframeAPIReady() {
       }
     });
   }
-
-
 function onPlayerReady(event) {
     event.target.playVideo();
   }
-
-
 var done = false;
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -83,15 +78,17 @@ function searchApi(workoutType, workoutMuscle, workoutDifficulty) {
         });
 
 }
-// TODO: code youtube API request
 
+// API request to youtube 
 function getVideo(type, muscle, difficulty, workouts) {
-    var videoRequestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UC68TLK0mAEzUyHx5x5k-S1Q&maxResults=1&q=${type},${muscle},${difficulty}&key=${youtubeAPIKey}`
+    var videoRequestUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=focus,listen,lift&key=${youtubeAPIKey}`
     fetch (videoRequestUrl) 
         .then(function (response) {
             return response.json();
         })
             .then(function (workoutVideos) {
+              console.log(workoutVideos.items[0].id.videoId)
+              motVid = workoutVideos.items[0].id.videoId;
                 printResults(workouts, workoutVideos)
             })
 
@@ -104,7 +101,6 @@ function printResults(workouts, workoutVideos) {
     console.log(workoutVid)
     var workoutsContainer = document.querySelector('#workouts-container .collapsible');
     
-    // var videoUrl = `https://www.youtube.com/embed/${videoID}`
     for (var i = 0; i < workouts.length; i++) {
         var workoutName = workouts[i].name
         var workoutDifficulty = workouts[i].difficulty
@@ -120,15 +116,10 @@ function printResults(workouts, workoutVideos) {
         var instructionsEl = document.createElement('p');
         instructionsEl.textContent = workoutInstructions;
 
-        // var workoutVideoEl = document.createElement('iframe')
-        // workoutVideoEl.setAttribute('id', 'player')
-
         bodyDiv.appendChild(instructionsEl);
         listItem.appendChild(headerDiv);
         listItem.appendChild(bodyDiv);
         workoutsContainer.appendChild(listItem);
-        // bodyDiv.appendChild(workoutVideoEl)
-        // workoutVideoEl.innerHTML = "<img src =\"workoutVideos.items[0].snippet.thumbnails.default.url\" width=\"400px\" height=\"150px\">"
 
     }
     var elems = document.querySelectorAll('.collapsible');
